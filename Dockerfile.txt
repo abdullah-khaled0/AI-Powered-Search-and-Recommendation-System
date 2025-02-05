@@ -1,5 +1,5 @@
-# Use Python 3.12.4 as base image
-FROM python:3.12.4
+# Use the official Python 3.12.4 image from Docker Hub
+FROM python:3.12.4-slim
 
 # Set working directory in the container
 WORKDIR /app
