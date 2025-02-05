@@ -1,5 +1,6 @@
 import os
 import textwrap
+import json
 
 import firebase_admin # type: ignore
 from firebase_admin import credentials, firestore # type: ignore
@@ -32,10 +33,20 @@ def to_markdown(text):
 
 
 def DB():
-    # # Initialize Firestore
-    cred = credentials.Certificate("firebase-key.json")
+    # Load Firebase credentials from environment variable
+    firebase_json = os.getenv("FIREBASE_CREDENTIALS")
+    
+    if not firebase_json:
+        raise ValueError("FIREBASE_CREDENTIALS environment variable is missing!")
+    
+    # Convert JSON string back to a dictionary
+    firebase_credentials = json.loads(firebase_json)
+    
+    # Initialize Firebase
+    cred = credentials.Certificate(firebase_credentials)
     firebase_admin.initialize_app(cred)
-
+    
+    # Firestore client
     db = firestore.client()
 
     return db
