@@ -9,6 +9,13 @@ A FastAPI-powered application that generates **Firestore query expressions** bas
 
 ---
 
+## 📹 Demo
+![Demo](demo.gif)
+> Check out the application in action!
+
+
+---
+
 ## 📌 Features
 ✅ Generate structured Firestore query expressions dynamically.  
 ✅ Uses **Google Gemini AI** to interpret user queries.  
